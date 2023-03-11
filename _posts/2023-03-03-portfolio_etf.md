@@ -74,7 +74,7 @@ df
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -270,7 +270,7 @@ data
 
 ```
 
-
+![output_10_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-03-portfolio_etf/output_10_1.png)
 
 
 <div>
@@ -282,7 +282,7 @@ data
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -759,9 +759,9 @@ data[tickers].dropna().plot()
 
 
 
-    
+​    
 ![png](output_10_1.png)
-    
+​    
 
 
 
@@ -830,9 +830,9 @@ plt.show()
 ```
 
 
-    
+​    
 ![png](output_13_0.png)
-    
+​    
 
 
 
@@ -896,7 +896,7 @@ cov
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1060,7 +1060,7 @@ msr_w_df
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1198,9 +1198,9 @@ plt.ylabel("Weights")
 
 
 
-    
+​    
 ![png](output_19_1.png)
-    
+​    
 
 
 
@@ -1224,9 +1224,9 @@ plt.ylabel("Returns")
 
 
 
-    
+​    
 ![png](output_20_1.png)
-    
+​    
 
 
 
@@ -1316,23 +1316,23 @@ for _ in tqdm(range(cnt)):
 
 
       2%|▉                                           | 1/50 [00:00<00:06,  7.33it/s]
-
+    
     2.07 0.11 ['KOSEF 미국달러선물', 'KODEX 미국S&P500산업재(합성)', 'KODEX 미국S&P500에너지(합성)', 'TIGER 200 IT', 'TIGER 200 에너지화학', 'ACE 미국다우존스리츠(합성 H)']
 
 
       8%|███▌                                        | 4/50 [00:00<00:07,  6.31it/s]
-
+    
     2.42 0.17 ['KOSEF 미국달러선물', 'KODEX 미국S&P500산업재(합성)', 'KODEX 미국S&P500에너지(합성)', 'TIGER 200 IT', 'TIGER 200 에너지화학', 'TIGER 구리실물']
 
 
      12%|█████▎                                      | 6/50 [00:00<00:05,  7.49it/s]
-
+    
     2.44 0.18 ['KOSEF 미국달러선물', 'KODEX 미국S&P500산업재(합성)', 'KODEX 미국S&P500에너지(합성)', 'TIGER 200 IT', 'TIGER 200 에너지화학', 'KODEX 코스피']
     2.7 0.26 ['KOSEF 미국달러선물', 'KODEX 미국S&P500산업재(합성)', 'KODEX 미국S&P500에너지(합성)', 'TIGER 200 IT', 'TIGER 200 에너지화학', 'TIGER 유로스탁스50(합성 H)']
 
 
      50%|█████████████████████▌                     | 25/50 [00:03<00:03,  7.19it/s]
-
+    
     3.41 0.33 ['KOSEF 미국달러선물', 'KODEX 미국S&P500산업재(합성)', 'KODEX 미국S&P500에너지(합성)', 'TIGER 200 IT', 'TIGER 200 에너지화학', 'TIGER 코스닥150']
 
 
@@ -1353,9 +1353,9 @@ results['ret'].plot.hist(bins=100)
 
 
 
-    
+​    
 ![png](output_26_1.png)
-    
+​    
 
 
 
@@ -1377,7 +1377,7 @@ results[:10]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1523,61 +1523,61 @@ for idx in idxs:
 
 
 
-    
+
 ![png](output_28_1.png)
     
 
 
 
-    
+
 ![png](output_28_2.png)
     
 
 
 
-    
+
 ![png](output_28_3.png)
     
 
 
 
-    
+
 ![png](output_28_4.png)
     
 
 
 
-    
+
 ![png](output_28_5.png)
     
 
 
 
-    
+
 ![png](output_28_6.png)
     
 
 
 
-    
+
 ![png](output_28_7.png)
     
 
 
 
-    
+
 ![png](output_28_8.png)
     
 
 
 
-    
+
 ![png](output_28_9.png)
     
 
 
 
-    
+
 ![png](output_28_10.png)
     
 
@@ -1633,9 +1633,9 @@ ax2.plot(port_cum_rets, lw=1, c='black')#, ls='--')
 
 
 
-    
+​    
 ![png](output_29_2.png)
-    
+​    
 
 
 
@@ -1659,9 +1659,9 @@ ax.set_yticklabels(weights.날짜.apply(lambda x:x.strftime("%Y-%m-%d")))
 
 
 
-    
+​    
 ![png](output_30_1.png)
-    
+​    
 
 
 
@@ -1800,7 +1800,7 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1873,52 +1873,52 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark)
 
 
 
-    
+
 ![png](output_32_6.png)
     
 
 
 
-    
+
 ![png](output_32_7.png)
     
 
 
 
-    
+
 ![png](output_32_8.png)
     
 
 
 
-    
+
 ![png](output_32_9.png)
     
 
 
 
-    
+
 ![png](output_32_10.png)
     
 
 
 
-    
+
 ![png](output_32_11.png)
     
 
 
 
-    
+
 ![png](output_32_12.png)
     
 
 
 
     ---------------------------------------------------------------------------
-
+    
     IndexError                                Traceback (most recent call last)
-
+    
     Cell In[29], line 5
           3 benchmark = benchmark.tz_convert(None)
           4 # 슬리피지 0.003
@@ -1987,7 +1987,7 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark)
 
 
 
-    
+
 ![png](output_32_14.png)
     
 
