@@ -14,6 +14,7 @@ sidebar:
 Typora-root-url: ../
 
 ---
+# portfolio optimization 
 
 - 가격데이터 크롤링
 - 투자비중 선정 : MSR(Maximize Sharpe Ratio) : 
@@ -72,6 +73,8 @@ except :
     pass
 matplotlib.rcParams['axes.unicode_minus'] = False
 ```
+
+---
 
 ## 1. Crawling
 
@@ -440,6 +443,7 @@ etf_price
 <p>410997 rows × 11 columns</p>
 </div>
 
+---
 
 
 ## 2. 샤프비율 최적화
@@ -998,8 +1002,6 @@ ax2.set_title('동일비중 |투자시 누적 수익률 : %d%%' % (100*ew_cum_re
 
 
 
-    Text(0.5, 1.0, '동일비중 |투자시 누적 수익률 : 8%')
-
 ![output_19_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_19_1.png)
 
 
@@ -1114,6 +1116,8 @@ ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 
 실제로 랜덤으로 5종목을 뽑으면 성과가 매우 안 좋았습니다. <br>
 설명을 위해 위 종목을 선정하였습니다. 
+
+---
 
 ## 3. 종목선택 : 몬테카를로 시뮬레이션
 
@@ -1430,6 +1434,8 @@ for idx in idxs:
 - 종목 몇개를 고정하고, 상관계수가 높은 종목들을 필터링해주기 
 - 유전알고리즘으로 종목 선택 개선하기 
 
+---
+
 ## 4. 종목선택 > 유전알고리즘
 
 다음 코드는 주식 선택을 위한 유전 알고리즘입니다. 먼저 세대 수, 짝짓기하는 부모 수, 모집단 크기, 돌연변이율, 적합도 함수와 같은 유전 알고리즘 파라미터를 설정합니다. <br>
@@ -1650,12 +1656,6 @@ solution
 
 
 
-
-    array([ 23, 132, 139,  85,  78])
-
-
-
-
 ```python
 #tickers = [ticker_list[i] for i in solution] + common_tickers
 tickers = ['KBSTAR 200', 'TIGER 코스닥150', 'TREX 200', 'TIGER 200 IT', 'KOSEF 미국달러선물']
@@ -1826,6 +1826,8 @@ qs.reports.basic((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, p
 
 ```
 
+---
+
 ## 5. 최종 시뮬레이션 결과 시각화
 
 여러 시뮬레이션을 거쳐 가장 좋은 수익률을 낸 종목 5개를 선택
@@ -1928,11 +1930,6 @@ sns.heatmap(temp.round(2), cmap='RdBu_r', vmin=-0.3, vmax=0.3, annot=True, ax=ax
 ax.set_yticklabels(weights.날짜.apply(lambda x:x.strftime("%Y-%m")))
 ;
 ```
-
-
-
-
-    ''
 
 
 
