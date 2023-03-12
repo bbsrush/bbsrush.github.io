@@ -74,7 +74,7 @@ except :
 matplotlib.rcParams['axes.unicode_minus'] = False
 ```
 
----
+
 
 ## 1. Crawling
 
@@ -443,7 +443,8 @@ etf_price
 <p>410997 rows × 11 columns</p>
 </div>
 
----
+
+
 
 
 ## 2. 샤프비율 최적화
@@ -1117,7 +1118,7 @@ ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 실제로 랜덤으로 5종목을 뽑으면 성과가 매우 안 좋았습니다. <br>
 설명을 위해 위 종목을 선정하였습니다. 
 
----
+
 
 ## 3. 종목선택 : 몬테카를로 시뮬레이션
 
@@ -1434,7 +1435,8 @@ for idx in idxs:
 - 종목 몇개를 고정하고, 상관계수가 높은 종목들을 필터링해주기 
 - 유전알고리즘으로 종목 선택 개선하기 
 
----
+
+
 
 ## 4. 종목선택 > 유전알고리즘
 
@@ -1644,7 +1646,6 @@ solution
 
 
 
-​    
 
 
     Parameters of the best solution : [ 23 132 139  85  78]
@@ -1728,9 +1729,9 @@ plt.show()
 ```
 
 
-​    ![output_42_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_42_0.png)
+![output_42_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_42_0.png)
 
-​    
+
 
 ```python
 # 시뮬레이션 투자비중, 수익률
@@ -1822,11 +1823,9 @@ qs.reports.basic((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, p
 포트폴리오 누적 수익률은 204%로 S&P500의 95% 누적수익률보다 높습니다. 
 
 
-```python
 
-```
 
----
+
 
 ## 5. 최종 시뮬레이션 결과 시각화
 
@@ -1909,9 +1908,9 @@ plt.show()
 ```
 
 
-​    ![output_50_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_50_0.png)
+![output_50_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_50_0.png)
 
-​    
+
 
 
 역시나 달러를 제외하고는 상관계수가 모두 빨간색으로 좋은 포트폴리오라고 보기엔 어려울 것 같습니다.
@@ -1933,9 +1932,9 @@ ax.set_yticklabels(weights.날짜.apply(lambda x:x.strftime("%Y-%m")))
 
 
 
-​    ![output_53_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_53_1.png)
+![output_53_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_53_1.png)
 
-​    
+ 
 
 
 
@@ -2150,7 +2149,7 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, pe
 ![output_56_18](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_18.png)
 
 
----
+
 
 
 ## 6. 결론
