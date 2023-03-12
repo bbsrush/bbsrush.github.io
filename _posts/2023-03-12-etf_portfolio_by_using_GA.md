@@ -1,5 +1,6 @@
 ---
-layout : single
+
+layout: single
 classes: wide
 title : "연금 포트폴리오 종목 선정하기 feat. 유전알고리즘"
 categories: portfolio
@@ -15,11 +16,11 @@ Typora-root-url: ../
 ---
 
 - 가격데이터 크롤링
-- 투자비중 선정 : MSR(Maximum Sharpe Ratio) : 
+- 투자비중 선정 : MSR(Maximize Sharpe Ratio) : 
 - 종목선정 방식 : 몬테카를로, 유전알고리즘 
 - 하이퍼파라미터
-    - 종목개수 (여기서는 5종목)
-    - 투자비중 선정방식(여기서는 MSR) 
+    - 종목개수 (5종목)
+    - 투자비중 선정방식(MSR) 
     - 롤링 윈도우 (12개월)
     - 그외 유전알고리즘 파라미터들
 
