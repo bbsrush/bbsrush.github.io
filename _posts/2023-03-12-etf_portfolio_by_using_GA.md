@@ -1,19 +1,21 @@
 ---
 layout : single
-title : "유전알고리즘으로 ETF 포트폴리오 만들기"
+classes: wide
+title : "연금 포트폴리오 종목 선정하기 feat. 유전알고리즘"
 categories: portfolio
-tag: [python, crawling, pygad, etf, msr]
+tag: [python, portfolio, genetic algorithm, ga, pygad]
 toc: true
+toc_label: "Table of Contents"
+toc_icon: "cog"
 author_profile: false
 sidebar:
     nav: "docs"
 Typora-root-url: ../
+
 ---
 
-
-
 - 1. 가격데이터 크롤링
-- 2. 투자비중 : MSR - 샤프비율최대화(12개월 롤링)
+- 2. 투자비중 : 샤프비율최대화(12개월 롤링)
 - 3. 종목선택 > 랜덤 5종목
 - 4. 종목선택 > 유전알고리즘 5종목 
 
@@ -163,7 +165,9 @@ etf
 <p>678 rows × 2 columns</p>
 </div>
 
-총 678개의 ETF 티커명을 불러왔습니다. 
+
+
+총 678개의 ETF 지커명을 불러왔습니다. 
 
 ### 주가 데이터 크롤링(일단위 OHLCV) 
 
@@ -977,14 +981,24 @@ ax2.axhline(0, ls='--', color='black', lw=5, alpha=0.5)
 ax2.set_title('동일비중 투자시 누적 수익률 : %d%%' % (100*ew_cum_rets[-1]))
 ```
 
-![output_18_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_18_1.png)    
-    
+
+
+
+    Text(0.5, 1.0, '동일비중 투자시 누적 수익률 : 8%')
+
+
+
+
+​    ![output_18_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_18_1.png)
+
+​    
 
 
 ### 샤프비율 최대화로 가중치 계산
 
 
 ```python
+# 출처 : 퀀트대디
 # 샤프비율 최대화 모델 가중치 계산 함수
 def get_msr_weights(er, cov):
     # 자산 개수 
@@ -1052,13 +1066,27 @@ ax.set_ylabel("Weights")
 ax2 = ax.twinx()
 ax2.plot(port_cum_rets, lw=2, c='blue')#, ls='--')
 ax2.axhline(0, color='black', alpha=0.5, ls='--')
-ax.set_xlim(datetime.date(2012,11,29), datetime.date(2023,3,1))
+ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 ```
 
 
-![output_21_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_21_1.png)
-    
 
+
+    (17134.0, 19417.0)
+
+
+
+
+![output_21_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_21_1.png)    
+
+​    
+
+
+세로 좌측 : 투자비중, 세로 우측 : 누적수익률 
+
+투자기간 5년동안 종목 비중을 월마다 리밸런싱해주는 것이<br>
+개별종목 최대 수익률(27%)보다보다 더 높은 수익률(37%)을 보여주지만, <br>
+안정적으로 보이진 않습니다. 
 
 ## 3. 종목선택 : 랜덤
 
@@ -1137,27 +1165,42 @@ for _ in tqdm(range(cnt)):
     5 0.7 146
 
 
-      1%|▎                                         | 6/1000 [00:00<01:07, 14.71it/s]
+      0%|                                          | 2/1000 [00:00<01:29, 11.16it/s]
     
-    0.05 -0.05 0.12 ['TIGER 현대차그룹+펀더멘털', 'KODEX 철강', 'TIGER 구리실물', 'KODEX 자동차', 'KODEX 미국S&P500산업재(합성)']
+    0.43 -0.06 0.38 ['TIGER 단기선진하이일드(합성 H)', 'TIGER 농산물선물Enhanced(H)', 'TIGER 200 생활소비재', 'TIGER 200 건설', 'KODEX 반도체']
 
 
-      1%|▍                                        | 10/1000 [00:00<01:11, 13.85it/s]
+      1%|▎                                         | 8/1000 [00:00<01:17, 12.84it/s]
     
-    0.32 -0.07 0.23 ['KOSEF 고배당', 'TIGER 현대차그룹+펀더멘털', 'ARIRANG 코스피50', 'ACE 삼성그룹동일가중', 'TIGER 삼성그룹펀더멘털']
+    0.54 -0.17 0.33 ['ARIRANG 고배당주', 'KODEX 에너지화학', 'KBSTAR 중국본토대형주CSI100', 'KODEX 골드선물(H)', 'ACE 밸류대형']
 
 
-      2%|▊                                        | 20/1000 [00:01<01:07, 14.43it/s]
+      2%|▉                                        | 24/1000 [00:01<01:06, 14.60it/s]
     
-    0.73 -0.15 0.57 ['ACE 삼성그룹동일가중', 'TIGER 일본니케이225', 'TIGER 200 IT', 'ACE 200', 'TIGER 미국나스닥100']
+    0.61 -0.01 0.32 ['KODEX 반도체', 'KBSTAR 5대그룹주', 'TIGER 200 중공업', 'ARIRANG 코스피50', '마이티 코스피100']
 
 
-      3%|█▍                                       | 34/1000 [00:02<01:01, 15.71it/s]
+      5%|█▉                                       | 46/1000 [00:03<00:58, 16.26it/s]
     
-    1.51 -0.03 0.67 ['TIGER 단기선진하이일드(합성 H)', 'KODEX 에너지화학', 'TIGER 삼성그룹펀더멘털', 'KBSTAR 우량업종', 'TIGER 반도체']
+    0.61 0.1 0.5 ['KODEX 코스피100', 'ACE 인도네시아MSCI(합성)', 'KODEX 미국S&P500산업재(합성)', 'KBSTAR 모멘텀밸류', 'ACE 코스닥(합성)']
 
 
-    100%|███████████████████████████████████████| 1000/1000 [01:09<00:00, 14.29it/s]
+      9%|███▌                                     | 86/1000 [00:06<00:58, 15.58it/s]
+    
+    1.04 0.1 0.76 ['KODEX 삼성그룹', 'TREX 200', 'TIGER S&P글로벌헬스케어(합성)', '파워 코스피100', 'ACE 삼성그룹섹터가중']
+
+
+     14%|█████▌                                  | 138/1000 [00:09<00:55, 15.63it/s]
+    
+    1.13 0.17 0.77 ['ARIRANG 코스피50', 'ARIRANG 코스피', 'KODEX 일본TOPIX100', 'KODEX 코스피100', 'TIGER 200 산업재']
+
+
+     21%|████████▌                               | 214/1000 [00:14<01:00, 13.03it/s]
+    
+    1.73 0.04 0.72 ['KODEX 반도체', 'TIGER 200 IT', 'KOSEF 미국달러선물', 'KOSEF 고배당', 'TIGER 미국나스닥100']
+
+
+    100%|███████████████████████████████████████| 1000/1000 [01:10<00:00, 14.10it/s]
 
 
 ### 수익률 결과 히스토그램
@@ -1168,11 +1211,10 @@ results = pd.DataFrame({"port":port,"sharpe":sharpe,"ret":ret,"ret_12m":ret_12m}
 results['ret'].plot.hist(bins=100)
 ```
 
-
-![output_26_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_26_1.png)
-    
+![output_27_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_27_1.png)
 
 
+​    
 
 ```python
 results = pd.DataFrame({"port":port,"ret":ret,"ret_12m":ret_12m,"sharpe":sharpe})
@@ -1210,60 +1252,74 @@ results[:10]
   </thead>
   <tbody>
     <tr>
-      <th>696</th>
-      <td>[KODEX 삼성그룹, ARIRANG 글로벌MSCI(합성 H), TIGER 200 ...</td>
-      <td>1.284922</td>
-      <td>-0.021121</td>
-      <td>0.708421</td>
+      <th>949</th>
+      <td>[TIGER LG그룹+펀더멘털, ARIRANG 미국다우존스고배당주(합성 H), KO...</td>
+      <td>1.083995</td>
+      <td>0.105965</td>
+      <td>1.032625</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>[TIGER 단기선진하이일드(합성 H), KODEX 에너지화학, TIGER 삼성그룹...</td>
-      <td>1.507222</td>
-      <td>-0.026429</td>
-      <td>0.667814</td>
+      <th>325</th>
+      <td>[TIGER 200 IT, ACE 밸류대형, KODEX 200, KODEX 미국달러...</td>
+      <td>1.041779</td>
+      <td>0.091459</td>
+      <td>0.838990</td>
     </tr>
     <tr>
-      <th>508</th>
-      <td>[KOSEF 미국달러선물, KODEX 기계장비, ACE 중국본토CSI300, KBS...</td>
-      <td>1.170720</td>
-      <td>0.055298</td>
-      <td>0.516993</td>
+      <th>145</th>
+      <td>[KODEX 배당성장, TIGER 미국나스닥100, TIGER KTOP30, KOS...</td>
+      <td>1.094986</td>
+      <td>0.068243</td>
+      <td>0.830157</td>
     </tr>
     <tr>
-      <th>738</th>
-      <td>[KODEX 철강, TIGER 미국나스닥100, KOSEF 200, TIGER 미국...</td>
-      <td>1.174502</td>
-      <td>-0.147924</td>
-      <td>0.515280</td>
+      <th>134</th>
+      <td>[ARIRANG 코스피50, ARIRANG 코스피, KODEX 일본TOPIX100,...</td>
+      <td>1.134787</td>
+      <td>0.170098</td>
+      <td>0.769744</td>
     </tr>
     <tr>
-      <th>989</th>
-      <td>[TIGER 은행, TIGER 헬스케어, KODEX 철강, KOSEF 미국달러선물,...</td>
-      <td>1.033408</td>
-      <td>-0.005830</td>
-      <td>0.491808</td>
+      <th>507</th>
+      <td>[ACE 코스닥(합성), KOSEF 미국달러선물, KODEX 반도체, TIGER 유...</td>
+      <td>1.004255</td>
+      <td>0.045385</td>
+      <td>0.768535</td>
     </tr>
     <tr>
-      <th>604</th>
-      <td>[KODEX 일본TOPIX100, TIGER 소프트웨어, TIGER 200 에너지화...</td>
-      <td>1.148906</td>
-      <td>0.063073</td>
-      <td>0.465383</td>
+      <th>84</th>
+      <td>[KODEX 삼성그룹, TREX 200, TIGER S&amp;P글로벌헬스케어(합성), 파...</td>
+      <td>1.042702</td>
+      <td>0.095163</td>
+      <td>0.755316</td>
     </tr>
     <tr>
-      <th>672</th>
-      <td>[KODEX 은행, TIGER 미국나스닥100, TREX 200, KOSEF 200...</td>
-      <td>1.042468</td>
-      <td>-0.175534</td>
-      <td>0.429915</td>
+      <th>490</th>
+      <td>[KODEX 미국S&amp;P500산업재(합성), ACE 중국본토CSI300, TIGER ...</td>
+      <td>1.131652</td>
+      <td>0.202374</td>
+      <td>0.752559</td>
     </tr>
     <tr>
-      <th>978</th>
-      <td>[마이다스 200커버드콜5%OTM, KODEX 기계장비, ACE 삼성그룹섹터가중, ...</td>
-      <td>1.060090</td>
-      <td>0.020592</td>
-      <td>0.422188</td>
+      <th>220</th>
+      <td>[TIGER 200 중공업, TIGER 200 금융, TIGER 단기선진하이일드(합...</td>
+      <td>1.275585</td>
+      <td>0.376153</td>
+      <td>0.725623</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>[KODEX 반도체, TIGER 200 IT, KOSEF 미국달러선물, KOSEF ...</td>
+      <td>1.729249</td>
+      <td>0.035973</td>
+      <td>0.720899</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>[KOSEF 블루칩, KODEX 코스닥150, TIGER 미국나스닥100, TIGE...</td>
+      <td>1.109075</td>
+      <td>-0.305920</td>
+      <td>0.644526</td>
     </tr>
   </tbody>
 </table>
@@ -1314,17 +1370,19 @@ for idx in idxs:
     ax2.plot(port_cum_rets, lw=1, c='black')#, ls='--')
 ```
 
-    696 ['KODEX 삼성그룹', 'ARIRANG 글로벌MSCI(합성 H)', 'TIGER 200 IT', 'ARIRANG 코스피', 'ACE 삼성그룹섹터가중']
-    31 ['TIGER 단기선진하이일드(합성 H)', 'KODEX 에너지화학', 'TIGER 삼성그룹펀더멘털', 'KBSTAR 우량업종', 'TIGER 반도체']
-    508 ['KOSEF 미국달러선물', 'KODEX 기계장비', 'ACE 중국본토CSI300', 'KBSTAR 중국본토대형주CSI100', 'KODEX 운송']
-        
+    949 ['TIGER LG그룹+펀더멘털', 'ARIRANG 미국다우존스고배당주(합성 H)', 'KODEX 미국달러선물', 'TIGER 단기선진하이일드(합성 H)', 'TIGER 200 IT']
+    325 ['TIGER 200 IT', 'ACE 밸류대형', 'KODEX 200', 'KODEX 미국달러선물', 'KODEX 바이오']
+    145 ['KODEX 배당성장', 'TIGER 미국나스닥100', 'TIGER KTOP30', 'KOSEF 미국달러선물', 'TIGER 코스닥150']
 
-![output_29_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_29_1.png)
+![output_30_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_30_1.png)
 
-![output_29_2](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_29_2.png)
+![output_30_2](/images/2023-03-12-etf_portfolio_by_using_GA/output_30_2.png)
 
-![output_29_3](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_29_3.png)
+![output_30_3](/images/2023-03-12-etf_portfolio_by_using_GA/output_30_3.png)
 
+
+
+​    
 
 
 1000개의 종목에 대해 시뮬레이션해도 결과가 신통치 않음 
@@ -1527,11 +1585,11 @@ solution
     Generation = [15] 	Fitness = 2.2685 	 Best tickers = ['KBSTAR 200', 'TIGER 코스닥150', 'TREX 200', 'TIGER 200 IT', 'KOSEF 미국달러선물']
     ----------------------------------------------------------------------------------------------------
 
+![output_34_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_34_1.png)
 
 
 
-![output_33_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_33_1.png)
-    
+​    
 
 
     Parameters of the best solution : [ 23 132 139  85  78]
@@ -1540,11 +1598,15 @@ solution
     Best fitness value reached after 8 generations.
     246.91905093193054 seconds
 
+
+
+
+
     array([ 23, 132, 139,  85,  78])
 
+누적수익률 227%라는 결과를 4분 만에 도달했지만, 지역최적해일 가능성이 높다. 
 
-
-## 결과 시각화
+## 5. 결과 시각화
 
 
 ```python
@@ -1584,7 +1646,7 @@ ax.set_title("MSR Weights")
 ax.set_xlabel("Date")
 ax.set_ylabel("Weights")
 ax2 = ax.twinx()
-ax2.plot(port_cum_rets, lw=1, c='black')#, ls='--')
+ax2.plot(port_cum_rets, lw=2, c='blue')#, ls='--')
 
 print(((1+port_rets.sum(axis=1)).cumprod()[-1]-1).round(2), ((1+port_rets.sum(axis=1)[-12:]).cumprod()[-1]-1).round(2), port_sharpe.round(2))
 ```
@@ -1595,7 +1657,7 @@ print(((1+port_rets.sum(axis=1)).cumprod()[-1]-1).round(2), ((1+port_rets.sum(ax
 
 
 
-![output_35_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_35_1.png)
+![output_36_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_36_1.png)
     
 
 
@@ -1610,8 +1672,8 @@ sns.clustermap(data[tickers].corr(),
 ```
 
 
-
-    ![output_36_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_36_1.png)
+![output_37_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_37_1.png)
+    
 
 
 
@@ -1636,8 +1698,8 @@ plt.show()
 ```
 
 
-​    ![output_37_0](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_37_0.png)
-
+![output_38_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_38_0.png)
+    
 
 
 달러를 제외하고는 상관계수가 모두 빨간색으로 좋은 포트폴리오라고 보기엔 어려울 것 같습니다.
@@ -1657,14 +1719,20 @@ ax.set_yticklabels(weights.날짜.apply(lambda x:x.strftime("%Y-%m")))
 
 
 
-![output_39_1](/images/2023-03-12-유전알고리즘으로 연금 포트폴리오 만들기/output_39_1.png)
+
+    ''
+
+
+
+
+![output_40_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_40_1.png)    
+
+   
 
 ```python
-# 3월 추천 투자 비중 
+# 다음 추천 투자 비중 
 msr_w_df.iloc[-1].round(2)
 ```
-
-
 
 
     종목명
@@ -1675,9 +1743,3 @@ msr_w_df.iloc[-1].round(2)
     KOSEF 미국달러선물    0.22
     Name: 2023-02-28 00:00:00, dtype: float64
 
-
-
-
-```python
-
-```
