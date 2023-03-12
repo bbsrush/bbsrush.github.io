@@ -3,7 +3,7 @@ layout : single
 classes: wide
 title : "연금 포트폴리오 종목 선정하기 feat. 유전알고리즘"
 categories: portfolio
-tag: [python, portfolio, genetic algorithm, ga, pygad]
+tag: [python, portfolio, genetic algorithm, ga, pygad, crawling]
 toc: true
 toc_label: "Table of Contents"
 toc_icon: "cog"
@@ -14,10 +14,12 @@ Typora-root-url: ../
 
 ---
 
-- 1. 가격데이터 크롤링
-- 2. 투자비중 : 샤프비율최대화(12개월 롤링)
-- 3. 종목선택 > 랜덤 5종목
-- 4. 종목선택 > 유전알고리즘 5종목 
+# ETF Portfolio
+
+- 가격데이터 크롤링
+- 투자비중 : 샤프비율최대화(12개월 롤링)
+- 종목선택 > 랜덤 5종목
+- 종목선택 > 유전알고리즘 5종목 
 
 
 ### 라이브러리
@@ -78,8 +80,6 @@ df=df.rename(columns={"itemcode": "종목코드", "itemname": "종목명"})
 etf=pd.merge(left=tickers,right=df,how='left',on='종목코드' )
 etf
 ```
-
-
 
 
 <div>
@@ -165,9 +165,7 @@ etf
 <p>678 rows × 2 columns</p>
 </div>
 
-
-
-총 678개의 ETF 지커명을 불러왔습니다. 
+총 678개의 ETF 종목명을 불러왔습니다. 
 
 ### 주가 데이터 크롤링(일단위 OHLCV) 
 
@@ -229,10 +227,6 @@ etf_price
     최초 : 678
     레버리지 필터링 후 : 498
     기간 필터링 후 : 146
-
-
-
-
 
 <div>
 <style scoped>
@@ -425,9 +419,7 @@ etf_price
 <p>357042 rows × 11 columns</p>
 </div>
 
-
-
-## 2. 샤프비율 최적화
+## 2. 샤프비율 최대화
 
 ### 데이터 변환
 
@@ -446,10 +438,6 @@ data
 
     CPU times: user 10.4 s, sys: 42.6 ms, total: 10.5 s
     Wall time: 10.5 s
-
-
-
-
 
 <div>
 <style scoped>
@@ -786,8 +774,6 @@ data
 <p>158 rows × 146 columns</p>
 </div>
 
-
-
 행은 날짜로, 열을 종목명으로 구성된 종가 데이터프레임을 만듭니다. 
 
 
@@ -812,7 +798,7 @@ print(data.isnull().sum())
     Length: 146, dtype: int64
 
 
-### 임의 종목 선택(5개)
+### 임의 종목 선택하여 수익률 계산하기
 
 
 ```python
@@ -827,10 +813,6 @@ temp
 ```
 
     ['마이다스 200커버드콜5%OTM', 'TIGER 현대차그룹+펀더멘털', 'KBSTAR 우량업종', 'KBSTAR V&S셀렉트밸류', 'KODEX 철강']
-
-
-
-
 
 <div>
 <style scoped>
@@ -982,19 +964,12 @@ ax2.set_title('동일비중 투자시 누적 수익률 : %d%%' % (100*ew_cum_ret
 ```
 
 
-
-
-    Text(0.5, 1.0, '동일비중 투자시 누적 수익률 : 8%')
-
-
-
-
 ​    ![output_18_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_18_1.png)
 
 ​    
 
 
-### 샤프비율 최대화로 가중치 계산
+### 샤프비율 최대화로 투자비중 선택하여 수익률 계산하기
 
 
 ```python
@@ -1070,13 +1045,6 @@ ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 ```
 
 
-
-
-    (17134.0, 19417.0)
-
-
-
-
 ![output_21_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_21_1.png)    
 
 ​    
@@ -1088,9 +1056,9 @@ ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 개별종목 최대 수익률(27%)보다보다 더 높은 수익률(37%)을 보여주지만, <br>
 안정적으로 보이진 않습니다. 
 
-## 3. 종목선택 : 랜덤
+## 3. 종목선택 : 몬테카를로 시뮬레이션
 
-### 임의로 5개 종목 선택하는 시뮬레이션
+### 임의로 5개 종목 선택 시뮬레이션
 
 
 ```python
@@ -1140,8 +1108,6 @@ for _ in tqdm(range(cnt)):
 
     for i in range(rolling_window, len(msr_w_df)): # 처음 12개월은 값이 없음. cov계산에 사용되어있어서
         msr_w_df.iloc[i] = get_msr_weights(er[i-1], cov[i-1])
-        #msr_w_df.iloc[i] = get_rp_weights(cov[i-1]) # 리스크패리티는 성과가 좋지 않음......
-
 
     # 포트폴리오 수익률 데이터프레임
     port_rets = msr_w_df.shift() * rets
@@ -1392,7 +1358,7 @@ for idx in idxs:
 - 종목 몇개를 고정하고, 상관계수가 높은 종목들을 필터링해주기 
 - 유전알고리즘으로 종목 선택 개선하기 
 
-## 4. 종목선택 > 유전알고리즘
+## 4. 종목선택 : 유전알고리즘
 
 
 ```python
@@ -1598,12 +1564,6 @@ solution
     Best fitness value reached after 8 generations.
     246.91905093193054 seconds
 
-
-
-
-
-    array([ 23, 132, 139,  85,  78])
-
 누적수익률 227%라는 결과를 4분 만에 도달했지만, 지역최적해일 가능성이 높다. 
 
 ## 5. 결과 시각화
@@ -1716,13 +1676,6 @@ sns.heatmap(temp.round(2), cmap='RdBu_r', vmin=-0.3, vmax=0.3, annot=True, ax=ax
 ax.set_yticklabels(weights.날짜.apply(lambda x:x.strftime("%Y-%m")))
 ;
 ```
-
-
-
-
-    ''
-
-
 
 
 ![output_40_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_40_1.png)    
