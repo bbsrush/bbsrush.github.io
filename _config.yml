@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "비비 노트"
+title                    : "비비에스 노트"
 title_separator          : "|"
 subtitle                 : "Bountiful Bloom Serene"# site tagline that appears below site title in masthead
-name                     : "BB Note"
+name                     : "BBS Note"
 description              : "기록과 공유의 공간입니다"
 url                      : "https://bbsrush.github.io"# the base hostname & protocol for your site e.g. 
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -32,7 +32,7 @@ words_per_minute         : 200
 comments:
   provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
-    shortname            : "bbnote" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "bbsnote" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -104,7 +104,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "BB Note"
+  name             : "BBS Note"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "공부한 것을 기록하고 공유하는 공간"
   location         : "South Korea"
