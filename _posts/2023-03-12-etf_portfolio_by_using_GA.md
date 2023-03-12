@@ -2150,8 +2150,7 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, pe
 ![output_56_18](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_18.png)
 
 
-
-​    
+---
 
 
 ## 6. 결론
