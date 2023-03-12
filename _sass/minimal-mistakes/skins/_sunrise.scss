@@ -7,13 +7,15 @@ $dark-gray: #0e2431 !default;
 $background-color: #e8d5b7 !default;
 $text-color: #000 !default;
 $muted-text-color: $dark-gray !default;
-$primary-color: #fc3a52 !default;
+$primary-color: #007664 !default;
+// $primary-color: #ff0000 !default;
 $border-color: mix(#000, $background-color, 20%) !default;
 $code-background-color: mix(#fff, $background-color, 20%) !default;
 $code-background-color-dark: mix(#000, $background-color, 10%) !default;
 $form-background-color: mix(#fff, $background-color, 15%) !default;
 $footer-background-color: #f9b248 !default;
-$link-color: mix(#000, $primary-color, 10%) !default;
+$link-color: mix(#007664, $primary-color, 10%) !default;
+// $link-color: mix(#000, $primary-color, 10%) !default;
 $link-color-hover: mix(#fff, $link-color, 25%) !default;
 $link-color-visited: mix(#000, $link-color, 25%) !default;
 $masthead-link-color: $text-color !default;
@@ -46,4 +48,9 @@ $base0f: #a3685a !default;
 .page__footer-follow .social-icons i,
 .page__footer-follow .social-icons .svg-inline--fa  {
   color: inherit;
+}
+
+// 추가
+.page__title{
+  color: $link-color;
 }
