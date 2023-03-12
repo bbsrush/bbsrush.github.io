@@ -18,10 +18,10 @@ minimal_mistakes_skin    : "sunrise" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "ko-KR"
 title                    : "#풍부 #번영 #평온"
 title_separator          : "|"
-subtitle                 : "Bountiful Bloom Serene"# site tagline that appears below site title in masthead
+subtitle                 : "Bountiful Bloom Serene" # site tagline that appears below site title in masthead
 name                     : "BBS Note"
-description              : "기록과 공유의 공간입니다"
-url                      : "https://bbsrush.github.io"# the base hostname & protocol for your site e.g. 
+description              : "공부한 것을 기록하고 공유하는 공간"
+url                      : "https://bbsrush.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -112,7 +112,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "bbsrush@gmail.com"
+      url: "mailto:bbsrush@gmail.com"
     # - label: "Website"
     #   icon: "fas fa-fw fa-link"
     #   # url: "https://your-website.com"
