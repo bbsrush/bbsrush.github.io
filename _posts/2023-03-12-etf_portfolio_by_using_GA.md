@@ -1,4 +1,4 @@
-—
+---
 layout : single
 classes: wide
 title : "연금 포트폴리오 종목 선정하기 feat. 유전알고리즘"
@@ -11,7 +11,7 @@ author_profile: false
 sidebar:
     nav: "docs"
 Typora-root-url: ../
-—
+---
 
 - 가격데이터 크롤링
 - 투자비중 선정 : MSR(Maximum Sharpe Ratio) : 
@@ -1251,7 +1251,7 @@ results['ret'].plot.hist(bins=100)
 
 ![output_32_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_32_1-8615803.png)    
 
-    
+​    
 
 
 
@@ -1636,7 +1636,7 @@ solution
 
 
 
-    
+​    
 
 
     Parameters of the best solution : [ 23 132 139  85  78]
@@ -2152,7 +2152,7 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, pe
 
 
 
-    
+​    
 
 
 ## 6. 결론
