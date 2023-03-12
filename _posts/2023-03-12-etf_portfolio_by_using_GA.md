@@ -14,16 +14,12 @@ sidebar:
 Typora-root-url: ../
 
 ---
+---
+
+
+
 # portfolio optimization 
 
-- 가격데이터 크롤링
-- 투자비중 선정 : MSR(Maximize Sharpe Ratio) : 
-- 종목선정 방식 : 몬테카를로, 유전알고리즘 
-- 하이퍼파라미터
-    - 종목개수 (5종목)
-    - 투자비중 선정방식(MSR) 
-    - 롤링 윈도우 (12개월)
-    - 그외 유전알고리즘 파라미터들
 
 안정적인 노후를 위해 연금투자를 하고 있습니다. 장기적으로 지켜봐야하는 연금저축을 어떻게 하면 잘 할 수 있을지 고민이 됩니다. <br>
 투자를 위해서는 1)투자 종목 선정과 2)투자 비중 3)리밸런싱 주기를 잘 선택해야 합니다. 
@@ -34,6 +30,15 @@ Typora-root-url: ../
 투자비중 선택은 샤프비율 최대화라는 로직으로 고정하였습니다. <br>
 결국 종목선정을 잘하는 것이 이 글의 목적입니다. <br>
 좋은 종목 선정하는 것은 매우 어려운 일인 것 같습니다. 
+
+- 투자비중 선정 : MSR(Maximize Sharpe Ratio)
+- 종목선정 방식 : 몬테카를로, 유전알고리즘 
+- 리밸런싱 주기 : 매달
+- 하이퍼파라미터
+    - 종목개수 (5종목)
+    - 투자비중 선정방식(MSR) 
+    - 롤링 윈도우 (12개월)
+    - 그외 유전알고리즘 파라미터들
 
 ### 라이브러리
 
@@ -1884,7 +1889,7 @@ print(((1+port_rets.sum(axis=1)).cumprod()[-1]-1).round(2), ((1+port_rets.sum(ax
     
 
 
-#### 상관관계
+### 상관관계
 
 
 ```python
@@ -1915,7 +1920,7 @@ plt.show()
 
 역시나 달러를 제외하고는 상관계수가 모두 빨간색으로 좋은 포트폴리오라고 보기엔 어려울 것 같습니다.
 
-#### 투자비중
+### 투자비중
 
 
 ```python
@@ -1956,7 +1961,7 @@ msr_w_df.iloc[-1].round(2)
 
 
 
-#### 벤치마크 비교
+### 벤치마크 비교
 
 
 ```python
@@ -2147,7 +2152,6 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, pe
 ![output_56_16](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_16.png)
 
 ![output_56_18](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_18.png)
-
 
 
 
