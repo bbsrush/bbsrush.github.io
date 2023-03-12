@@ -1002,7 +1002,7 @@ ax2.set_title('동일비중 |투자시 누적 수익률 : %d%%' % (100*ew_cum_re
 
 
 
-![output_19_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_19_1.png)
+![output_19_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_19_1.png)
 
 
 
@@ -1105,7 +1105,7 @@ ax2.axhline(0, color='black', alpha=0.5, ls='--')
 ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 ```
 
-![output_25_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_25_1.png)    
+![output_25_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_25_1.png)    
 
 
 세로 좌측 : 투자비중, 세로 우측 : 누적수익률 
@@ -1255,7 +1255,7 @@ results['ret'].plot.hist(bins=100)
 
 
 
-![output_32_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_32_1-8615803.png)    
+![output_32_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_32_1-8615803.png)    
 
 ​    
 
@@ -1419,11 +1419,11 @@ for idx in idxs:
     325 ['TIGER 200 IT', 'ACE 밸류대형', 'KODEX 200', 'KODEX 미국달러선물', 'KODEX 바이오']
     145 ['KODEX 배당성장', 'TIGER 미국나스닥100', 'TIGER KTOP30', 'KOSEF 미국달러선물', 'TIGER 코스닥150']
 
-![output_35_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_35_1.png)
+![output_35_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_35_1.png)
 
-![output_35_2](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_35_2.png)
+![output_35_2](/images/2023-03-12-etf_portfolio_by_using_GA/output_35_2.png)
 
-![output_35_3](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_35_3.png)
+![output_35_3](/images/2023-03-12-etf_portfolio_by_using_GA/output_35_3.png)
     
 
 
@@ -1640,7 +1640,7 @@ solution
     Generation = [15] 	Fitness = 2.2685 	 Best tickers = ['KBSTAR 200', 'TIGER 코스닥150', 'TREX 200', 'TIGER 200 IT', 'KOSEF 미국달러선물']
     ----------------------------------------------------------------------------------------------------
 
-![output_40_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_40_1.png)
+![output_40_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_40_1.png)
 
 
 
@@ -1700,7 +1700,7 @@ print(((1+port_rets.sum(axis=1)).cumprod()[-1]-1).round(2), ((1+port_rets.sum(ax
     ['KBSTAR 200', 'TIGER 코스닥150', 'TREX 200', 'TIGER 200 IT', 'KOSEF 미국달러선물']
     2.27 0.22 1.13
 
-![output_41_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_41_1.png)
+![output_41_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_41_1.png)
     
 
 
@@ -1728,7 +1728,7 @@ plt.show()
 ```
 
 
-​    ![output_42_0](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_42_0.png)
+​    ![output_42_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_42_0.png)
 
 ​    
 
@@ -1746,7 +1746,7 @@ ax.set_title("Monthly Weights and Returns")
 ```
 
 
-![output_43_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_43_1.png)
+![output_43_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_43_1.png)
 
 
 
@@ -1811,9 +1811,9 @@ qs.reports.basic((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, p
 
 <h4>Strategy Visualization</h4>
 
-![output_44_3](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_44_3.png)
+![output_44_3](/images/2023-03-12-etf_portfolio_by_using_GA/output_44_3.png)
 
-![output_44_4](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_44_4.png)
+![output_44_4](/images/2023-03-12-etf_portfolio_by_using_GA/output_44_4.png)
 
 
 
@@ -1881,7 +1881,7 @@ print(((1+port_rets.sum(axis=1)).cumprod()[-1]-1).round(2), ((1+port_rets.sum(ax
     ['KOSEF 미국달러선물', 'KODEX 미국S&P500산업재(합성)', 'TIGER 200 IT', 'TIGER 200 에너지화학', 'TIGER 코스닥150']
     2.81 0.15 1.27
 
-![output_48_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_48_1.png)
+![output_48_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_48_1.png)
     
 
 
@@ -1909,7 +1909,7 @@ plt.show()
 ```
 
 
-​    ![output_50_0](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_50_0.png)
+​    ![output_50_0](/images/2023-03-12-etf_portfolio_by_using_GA/output_50_0.png)
 
 ​    
 
@@ -1933,7 +1933,7 @@ ax.set_yticklabels(weights.날짜.apply(lambda x:x.strftime("%Y-%m")))
 
 
 
-​    ![output_53_1](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_53_1.png)
+​    ![output_53_1](/images/2023-03-12-etf_portfolio_by_using_GA/output_53_1.png)
 
 ​    
 
@@ -2141,13 +2141,13 @@ qs.reports.full((port_rets.sum(axis=1)-0.001).iloc[12:], benchmark=benchmark, pe
 
 <h4>Strategy Visualization</h4>
 
-![output_56_6](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_56_6.png)
+![output_56_6](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_6.png)
 
-![output_56_9](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_56_9.png)
+![output_56_9](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_9.png)
 
-![output_56_16](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_56_16.png)
+![output_56_16](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_16.png)
 
-![output_56_18](/Users/byeongsikbu/python/git/github-blog/bbsrush.github.io/images/2023-03-12-etf_portfolio_by_using_GA/output_56_18.png)
+![output_56_18](/images/2023-03-12-etf_portfolio_by_using_GA/output_56_18.png)
 
 
 
