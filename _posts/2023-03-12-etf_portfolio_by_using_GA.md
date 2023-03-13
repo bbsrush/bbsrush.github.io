@@ -1065,7 +1065,7 @@ def get_msr_weights(er, cov):
     return res.x #가중치 결과
 ```
 
-다음 코드는 12개월 롤링 기간으로 MSR(Mean-Variance Optimization with Sharpe Ratio) 전략을 적용하여 포트폴리오를 최적화하고 시각화하는 코드입니다.<br>
+다음 코드는 12개월 롤링 기간으로 MSR(Maximize Sharpe Ratio) 전략을 적용하여 포트폴리오를 최적화하고 시각화하는 코드입니다.<br>
 주어진 종목들(tickers)의 수익률(rets)을 기반으로, 기대수익률(er)과 공분산(cov)을 계산합니다.<br>
 그 후, rolling 함수를 이용하여 12개월 단위로 공분산 행렬(cov)을 계산하고, 이를 이용해 get_msr_weights 함수를 적용하여 최적 가중치를 구합니다.<br>
 구해진 최적 가중치(msr_w_df)를 이용하여 포트폴리오 수익률(port_rets)을 계산하고 누적수익률(port_cum_rets)과 샤프 지수(port_sharpe)를 계산합니다.<br>
@@ -1137,7 +1137,7 @@ ax.set_xlim(datetime.date(2016,11,29), datetime.date(2023,3,1))
 
 1. common_tickers와 random_tickers(상관관계가 threshold보다 낮은 티커들)에서 num_of_tickers개의 티커를 선택하여 tickers 리스트에 저장합니다.
 2. tickers 리스트에 해당하는 종목들의 수익률을 계산하여 rets에 저장합니다.
-3. rets에 대해 Mean-Variance Optimization을 수행하여 최적의 포트폴리오 비중을 계산하고, 이를 msr_w_df에 저장합니다.
+3. rets에 대해 MSR을 수행하여 최적의 포트폴리오 비중을 계산하고, 이를 msr_w_df에 저장합니다.
 4. msr_w_df와 rets를 곱하여 포트폴리오 수익률을 계산하고, 이를 이용하여 누적 수익률(port_cum_rets), 12개월 수익률(ret_12m), Sharpe Ratio(port_sharpe)를 계산합니다.
 5. 포트폴리오 티커(tickers), 누적 수익률(port_cum_rets[-1]), 12개월 수익률(ret_12m[-1]), Sharpe Ratio(port_sharpe)를 각각 리스트(port, ret, ret_12m, sharpe)에 저장합니다. 또한, 현재까지의 최고 누적 수익률(top)과 비교하여 더 높은 수익률을 얻은 경우에는 이를 갱신하고, 이에 따른 정보를 출력합니다.
 
@@ -1207,51 +1207,8 @@ for _ in tqdm(range(cnt)):
         print(port_cum_rets[-1].round(2), ret_12m[-1].round(2), port_sharpe.round(2), tickers) 
         top = ret[-1]
     
-```
-
-    5 0.7 146
 
 
-      0%|                                          | 2/1000 [00:00<01:29, 11.16it/s]
-    
-    0.43 -0.06 0.38 ['TIGER 단기선진하이일드(합성 H)', 'TIGER 농산물선물Enhanced(H)', 'TIGER 200 생활소비재', 'TIGER 200 건설', 'KODEX 반도체']
-
-
-      1%|▎                                         | 8/1000 [00:00<01:17, 12.84it/s]
-    
-    0.54 -0.17 0.33 ['ARIRANG 고배당주', 'KODEX 에너지화학', 'KBSTAR 중국본토대형주CSI100', 'KODEX 골드선물(H)', 'ACE 밸류대형']
-
-
-      2%|▉                                        | 24/1000 [00:01<01:06, 14.60it/s]
-    
-    0.61 -0.01 0.32 ['KODEX 반도체', 'KBSTAR 5대그룹주', 'TIGER 200 중공업', 'ARIRANG 코스피50', '마이티 코스피100']
-
-
-      5%|█▉                                       | 46/1000 [00:03<00:58, 16.26it/s]
-    
-    0.61 0.1 0.5 ['KODEX 코스피100', 'ACE 인도네시아MSCI(합성)', 'KODEX 미국S&P500산업재(합성)', 'KBSTAR 모멘텀밸류', 'ACE 코스닥(합성)']
-
-
-      9%|███▌                                     | 86/1000 [00:06<00:58, 15.58it/s]
-    
-    1.04 0.1 0.76 ['KODEX 삼성그룹', 'TREX 200', 'TIGER S&P글로벌헬스케어(합성)', '파워 코스피100', 'ACE 삼성그룹섹터가중']
-
-
-     14%|█████▌                                  | 138/1000 [00:09<00:55, 15.63it/s]
-    
-    1.13 0.17 0.77 ['ARIRANG 코스피50', 'ARIRANG 코스피', 'KODEX 일본TOPIX100', 'KODEX 코스피100', 'TIGER 200 산업재']
-
-
-     21%|████████▌                               | 214/1000 [00:14<01:00, 13.03it/s]
-    
-    1.73 0.04 0.72 ['KODEX 반도체', 'TIGER 200 IT', 'KOSEF 미국달러선물', 'KOSEF 고배당', 'TIGER 미국나스닥100']
-
-
-    100%|███████████████████████████████████████| 1000/1000 [01:10<00:00, 14.10it/s]    
-
-​    
-
-```python
 results = pd.DataFrame({"port":port,"ret":ret,"ret_12m":ret_12m,"sharpe":sharpe})
 cond = results['ret'] > 1
 results = results[cond].sort_values(by='sharpe', ascending=False)
