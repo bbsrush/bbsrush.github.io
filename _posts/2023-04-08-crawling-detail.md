@@ -1995,11 +1995,6 @@ temp
 temp.to_pickle('./data/kor_sector.pickle')
 ```
 
-
-```python
-
-```
-
 ### ❍ 월말기준으로 크롤링 (kor_ticker, kor_sector)
 
 
@@ -5691,11 +5686,6 @@ diff
 
 
 ```python
-
-```
-
-
-```python
 #df.to_pickle('./data/data_fs.pickle')
 ```
 
@@ -6293,11 +6283,6 @@ temp
 </div>
 
 
-
-
-```python
-
-```
 
 ## ❒ 상장폐지종목 (delistSymbol)
 
@@ -6925,28 +6910,6 @@ temp
 </table>
 <p>701 rows × 1 columns</p>
 </div>
-
-
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
 
 ## ❒ 재무제표 - 다트 (API Key 필요)
 
@@ -8230,19 +8193,8 @@ ax2 = ax1.twinx()
 ax2.plot(sp['Close'], label='S&P500')
 ax2.set_ylabel("S&P500 지수(로그)")
 ax2.legend(loc='upper right')
+​    
 ```
-
-
-
-
-    <matplotlib.legend.Legend at 0x2e0b95390>
-
-
-
-
-​    
-![png](output_162_1.png)
-​    
 
 
 ### ❍ Fear and Greed Index 
@@ -9207,21 +9159,7 @@ for i in tqdm(range(0, len(ticker_list))):
 
 ```
 
-      0%|                                                                                                        | 1/5526 [00:02<3:55:05,  2.55s/it]
 
-
-
-    ---------------------------------------------------------------------------
-    
-    KeyboardInterrupt                         Traceback (most recent call last)
-    
-    Cell In[87], line 16
-         13     print(ticker)
-         14     error_list.append(ticker)
-    ---> 16 time.sleep(1)
-
-
-    KeyboardInterrupt: 
 
 
 ### ❍ 재무제표
@@ -9441,7 +9379,3 @@ for i in tqdm(range(0, len(ticker_list))):
 
 - 유투브 : 헨리의 퀀트대학 (https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ)
 
-
-```python
-
-```
