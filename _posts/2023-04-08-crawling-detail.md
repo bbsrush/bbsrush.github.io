@@ -17,7 +17,7 @@ Typora-root-url: ../
 
 # 주식 관련 데이터 크롤링
 
-## ❒ 섹터, 종목 (kor_ticker, kor_sector)
+## 1. 섹터, 종목 (kor_ticker, kor_sector)
 
 - "kor_ticker.pickle" : (krx) 코스피/코스닥 기준일의 종목코드, 종가, 시가총액, EPS, BPS, 업종명(소분류)
 - "kor_sector.pickle" : (wiseindex) 코스피/코스닥 업종명
@@ -2967,7 +2967,7 @@ kor_sector_history
 
 ```
 
-## ❒ 주식 가격 크롤링 (stock_price)
+## 2. 주식 가격 크롤링 (stock_price)
 
 
 ```python
@@ -3986,7 +3986,7 @@ stock_price_pivot
 
 ```
 
-## ❒ ETF 가격 크롤링 (etf_price)
+## 3. ETF 가격 크롤링 (etf_price)
 
 
 ```python
@@ -4725,7 +4725,7 @@ etf_price_pivot
 # data.to_pickle("./data/etf_price_pivot.pickle")
 ```
 
-## ❒ 재무제표 (data_fs)
+## 4. 재무제표 (data_fs)
 
 - "data_fs.pickle" : FNGUIDE 에서 최근 4분기 재무제표 크롤링
 
@@ -5829,7 +5829,7 @@ data_fs_history
 
 ```
 
-## ❒ 가치지표 계산 (data_value)
+## 5. 가치지표 계산 (data_value)
 
 - "data_value.pickle" : data_fs로부터 TTM 데이터를 구한 후 계산
 - PER(주가수익비율), PBR(주가순자산비율), PSR(주가매출비율), PCR(주가현금흐름비율)
@@ -6284,7 +6284,7 @@ temp
 
 
 
-## ❒ 상장폐지종목 (delistSymbol)
+## 6. 상장폐지종목 (delistSymbol)
 
 
 ```python
@@ -6911,7 +6911,7 @@ temp
 <p>701 rows × 1 columns</p>
 </div>
 
-## ❒ 재무제표 - 다트 (API Key 필요)
+## 7. 재무제표 - 다트 (API Key 필요)
 
 - openapi를 활용해서 재무정보 다운로드
 
@@ -8081,7 +8081,7 @@ fs_data_ss_df
 
 
 
-## ❒ FRED 장단기 금리차, 공포탐욕지수
+## 8. FRED 장단기 금리차, 공포탐욕지수
 
 FRED : Federal Reserve Economic Data
 
@@ -8241,7 +8241,7 @@ idx
 
 
 
-## ❒ 해외 종목 다운로드
+## 9. 해외 종목 다운로드
 
 ### ❍ 미국 Ticker
 
@@ -9092,7 +9092,7 @@ all_data_df_bind
 # all_data_df_bind.to_pickle("./data/tickers_usa_investing.pickle")
 ```
 
-## ❒ 해외종목 가격, 재무제표 
+## 10. 해외종목 가격, 재무제표 
 
 
 ```python
