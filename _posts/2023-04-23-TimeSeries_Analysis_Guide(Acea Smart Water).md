@@ -1,9 +1,9 @@
 ---
 layout: single
 # classes: wide
-title : "시계열 데이터 분석 가이드 (Acea Smart Water)"
-categories: portfolio
-tag: [python, time-series, 시계열, ARIMA, LSTM, prophet]
+title : "시계열 분석 가이드 (Acea Smart Water)"
+categories: ml
+tag: [python, ml, time-series, arima, lstm, prophet]
 toc: true
 toc_label: "순서"
 toc_icon: "cog"
@@ -19,14 +19,14 @@ Typora-root-url: ../
 
 
 
-kaggle의 timeseries 가이드를 현재 실행가능한 버전으로 필사하였습니다. 해당 글은 2년 전 글이며, 출처는 다음과 같습니다. 
 
-TimeSeries Analysis 📈A Complete Guide
+
+# TimeSeries Analysis 📈A Complete Guide
 
 https://www.kaggle.com/code/andreshg/timeseries-analysis-a-complete-guide
 
 
-```pytho
+```python
 from google.colab import drive
 drive.mount('/content/drive')
 ```
@@ -34,8 +34,8 @@ drive.mount('/content/drive')
 
 ### 목적
 
-- 시계열 데이터를 해석
-- 시계열 데이터를 다루기 
+- 시계열 데이터를 해석하는 법
+- 시계열 데이터를 다루는 법 
 - 일반적인 시계열 모델 
     - ACF/PACF
     - ARIMA
@@ -48,6 +48,8 @@ drive.mount('/content/drive')
 ```python
 !pip install colorama
 ```
+
+
 
 ```python
 import numpy as np
@@ -570,14 +572,13 @@ df.head().style.set_properties(subset=['date'], **{'background-color':'dodgerblu
 
 ## 1. Data Visualization
 
-<features>
-
+<Features>
 - __Rainfall(강우량)__ indicates the quantity of rain falling (mm)
 - __Temperature(기온)__ indicates the temperature (℃)
 - __Drainage Volume(배수량)__ indicates the volume of water taken from the drinking water treatment plant (㎥)
-- __Hydrometry(강 유량계)__ indicates the groundwater level (m)
+- __Hydrometry(강 유량계)__ indicates the groundwater level(m)
 
-<target>
+<Target>
 
 - __Depth to Groundwater(지하수 깊이)__ indicates the groundwater level (m from the ground floor)
 
@@ -596,7 +597,7 @@ for i, column in enumerate(df.drop('date', axis=1).columns):
 ```
 
 
-​    ![output_11_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_11_0.png)
+​    ![output_11_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_11_0.png)
 
 
 
@@ -817,9 +818,9 @@ ax[1].set_xlim([date(2009, 1, 1), date(2020, 6, 30)])
 
 
 
-​    
 
-​    ![output_19_1](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_19_1.png)
+​    ![output_19_1](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_19_1.png)
+
 
 
 
@@ -835,9 +836,8 @@ plt.show()
 ```
 
 
-​    ![output_20_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_20_0.png)
+​    ![output_20_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_20_0.png)
 
-​    
 
 
 __Missing Values, how to handle__
@@ -890,9 +890,10 @@ plt.show()
 ```
 
 
-​    ![output_22_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_22_0.png)
+​    ![output_22_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_22_0.png)
 
-​    
+
+
 
 ```python
 # interpolate method looks best options
@@ -940,7 +941,7 @@ plt.show()
 ```
 
 
-​    ![output_25_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_25_0.png)
+​    ![output_25_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_25_0.png)
 
 ​    
 
@@ -1000,9 +1001,8 @@ plt.show()
 ```
 
 
-​    
-![png](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_30_0.png)
-​    
+![output_30_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_30_0.png)    
+
 
 
 In this visual check, we can see that the features don't have constant mean and std, but they are close to it.
@@ -1101,8 +1101,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-
-​    ![output_36_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_36_0.png)
+​    ![output_36_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_36_0.png)
 
 ​    
 
@@ -1136,8 +1135,9 @@ sns.distplot(df['depth_to_groundwater_log'], ax=ax[1])
 
 
 
-![output_39_1](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_39_1.png)  
-    
+​    ![output_39_1](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_39_1.png)
+
+​    
 
 
 #### 2.3.3. Differencing (차분)
@@ -1153,8 +1153,9 @@ visualize_adfuller_results(df['depth_to_groundwater_diff_1'], 'Differenced (1. O
 ```
 
 
-![output_41_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_41_0.png)    
+​    ![output_41_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_41_0.png)
 
+​    
 
 
 ## 3. Feature Engineering
@@ -1357,8 +1358,10 @@ ax.set_xlim([date(2009, 1, 1), date(2020, 6, 30)])
 plt.show()
 ```
 
-​    ![output_46_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_46_0.png)
 
+​    ![output_46_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_46_0.png)
+
+​    
 
 
 
@@ -1374,7 +1377,7 @@ plt.show()
 ```
 
 
-​    ![output_47_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_47_0.png)
+​    ![output_47_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_47_0.png)
 
 ​    
 
@@ -1462,8 +1465,9 @@ plt.show()
 ```
 
 
-​    ![output_52_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_52_0.png)
+​    ![output_52_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_52_0.png)
 
+​    
 
 
 ### 3.3 Lag
@@ -1539,9 +1543,9 @@ plt.show()
 ```
 
 
-![output_58_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_58_0.png)    
+​    ![output_58_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_58_0.png)
 
-    
+​    
 
 
 
@@ -1570,9 +1574,8 @@ plt.show()
 ```
 
 
-​    ![output_59_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_59_0.png)
+​    ![output_59_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_59_0.png)
 
-​    
 
 
 ### 4.1 Autocorrelation Analysis
@@ -1594,9 +1597,9 @@ plt.show()
 ```
 
 
-![output_62_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_62_0.png)    
+​    ![output_62_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_62_0.png)
 
-    
+​    
 
 
 
@@ -1613,7 +1616,7 @@ plt.show()
 ```
 
 
-​    ![output_63_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_63_0.png)
+​    ![output_63_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_63_0.png)
 
 ​    
 
@@ -1678,8 +1681,9 @@ plt.show()
 ```
 
 
-​    ![output_67_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_67_0.png)
+​    ![output_67_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_67_0.png)
 
+​    
 
 
 The idea with this plot is to understand which train and test set are we using to fit the model in each iteration.
@@ -1782,7 +1786,8 @@ plt.show()
 ```
 
 
-​    ![output_76_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_76_0.png)
+​    ![output_76_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_76_0.png)
+
 ​    
 
 
@@ -1856,7 +1861,7 @@ y_pred.plot()
 
 
 
-​    ![output_80_1](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_80_1.png)
+​    ![output_80_1](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_80_1.png)
 
 ​    
 
@@ -1868,9 +1873,8 @@ plt.show()
 ```
 
 
-​    ![output_81_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_81_0.png)
+​    ![output_81_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_81_0.png)
 
-​    
 
 
 
@@ -1891,7 +1895,7 @@ ax.set_title("ARIMA Result")
 
 
 
-​    ![output_82_1](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_82_1.png)
+​    ![output_82_1](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_82_1.png)
 
 ​    
 
@@ -1996,9 +2000,8 @@ plt.show()
 ```
 
 
-​    ![output_87_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_87_0.png)
+​    ![output_87_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_87_0.png)
 
-​    
 
 
 As we saw in the previous Steps, AutoARIMA (auto_arima) validates that (1,1,1) is the best configuration for (p,d,q).
@@ -2185,7 +2188,8 @@ ax.set_title("LSTM Result")
 
 
 
-​    ![output_95_1](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_95_1.png)
+
+​    ![output_95_1](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_95_1.png)
 
 ​    
 
@@ -2439,7 +2443,7 @@ plt.show()
 ```
 
 
-​    ![output_101_0](/images/2023-04-23-TimeSeries Analysis Guide(Acea Smart Water)/output_101_0.png)
+​    ![output_101_0](/images/2023-04-23-TimeSeries_Analysis_Guide(Acea Smart Water)/output_101_0.png)
 
 
 
