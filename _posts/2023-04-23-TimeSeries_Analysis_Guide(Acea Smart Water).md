@@ -572,13 +572,13 @@ df.head().style.set_properties(subset=['date'], **{'background-color':'dodgerblu
 
 ## 1. Data Visualization
 
-<Features>
+(features)
 - __Rainfall(강우량)__ indicates the quantity of rain falling (mm)
 - __Temperature(기온)__ indicates the temperature (℃)
 - __Drainage Volume(배수량)__ indicates the volume of water taken from the drinking water treatment plant (㎥)
 - __Hydrometry(강 유량계)__ indicates the groundwater level(m)
 
-<Target>
+(target)
 
 - __Depth to Groundwater(지하수 깊이)__ indicates the groundwater level (m from the ground floor)
 
