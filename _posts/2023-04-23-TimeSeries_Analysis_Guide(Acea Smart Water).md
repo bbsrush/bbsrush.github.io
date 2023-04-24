@@ -26,12 +26,6 @@ Typora-root-url: ../
 https://www.kaggle.com/code/andreshg/timeseries-analysis-a-complete-guide
 
 
-```python
-from google.colab import drive
-drive.mount('/content/drive')
-```
-
-
 ### 목적
 
 - 시계열 데이터를 해석하는 법
@@ -1582,9 +1576,9 @@ plt.show()
 
 ACF and PACF plots: After a time series has been stationarized by differencing, the next step in fitting an ARIMA model is to determine whether AR or MA terms are needed to correct any autocorrelation that remains in the differenced series. Of course, with software like Statgraphics, you could just try some different combinations of terms and see what works best. But there is a more systematic way to do this. By looking at the autocorrelation function (ACF) and partial autocorrelation (PACF) plots of the differenced series, you can tentatively identify the numbers of AR and/or MA terms that are needed.
 
-- Autocorrelation Function (ACF): P = Periods to lag for eg: (if P= 3 then we will use the three previous periods of our time series in the autoregressive portion of the calculation) P helps adjust the line that is being fitted to forecast the series. P corresponds with MA parameter
+- Autocorrelation Function (ACF): q = Periods to lag for eg: (if P= q then we will use the three previous periods of our time series in the autoregressive portion of the calculation) q helps adjust the line that is being fitted to forecast the series. q corresponds with MA parameter
 
-- Partial Autocorrelation Function (PACF): D = In an ARIMA model we transform a time series into stationary one(series without trend or seasonality) using differencing. D refers to the number of differencing transformations required by the time series to get stationary. D corresponds with AR parameter.
+- Partial Autocorrelation Function (PACF): p = In an ARIMA model we transform a time series into stationary one(series without trend or seasonality) using differencing. p refers to the number of differencing transformations required by the time series to get stationary. p corresponds with AR parameter.
 
 Autocorrelation plots help in detecting seasonality.
 
