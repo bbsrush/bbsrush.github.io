@@ -1,7 +1,7 @@
 ---
 layout: single
 # classes: wide
-title : "Backtesting.py 사용법"
+title : "Backtesting.py 사용법2"
 categories: portfolio
 tag: [python, backtesting]
 toc: true
@@ -2257,7 +2257,7 @@ plot_full_equity_curve(data, stats, warmup_bars, lookback_bars)
 ```
 
 검증세트로 투자한 것을 연결해서 표현한 그림    
-![output_46_0](/images/2023-10-14-lecture_of_backtesting-py/output_46_0.png)
+![output_46_0](/images/2023-10-14-lecture_of_backtesting-py2/output_46_0.png)
 
 
                                Equity  DrawdownPct DrawdownDuration
@@ -2312,7 +2312,7 @@ plot_flow_graph(data, lookback_bars, validation_bars)
 ```
 
 ​    학습/검증 세트의 구성을 보여주는 그림
-​    ![output_49_0](/images/2023-10-14-lecture_of_backtesting-py/output_49_0.png)
+​    ![output_49_0](/images/2023-10-14-lecture_of_backtesting-py2/output_49_0.png)
 
 
 ## 8. Fractional Shares in Backtesting.py

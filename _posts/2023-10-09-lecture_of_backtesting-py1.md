@@ -929,7 +929,7 @@ display(stats['_trades'])
 
 
 
-![output_46_0](/images/2023-10-09-lecture_of_backtesting-py/output_11_2.png)
+![output_46_0](/images/2023-10-09-lecture_of_backtesting-py1/output_11_2.png)
     
 
 
