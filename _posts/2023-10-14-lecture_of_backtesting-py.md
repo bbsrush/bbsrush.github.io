@@ -22,7 +22,7 @@ Typora-root-url: ../
 
 
 
-# backtesting.py
+# backtesting.py -2
 
 백테스팅 라이브러리인 backtesting.py에 대한 유투브 강의 기록.
 
