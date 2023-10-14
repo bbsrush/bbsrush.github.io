@@ -2054,7 +2054,7 @@ display(stats['_equity_curve'])
   </tbody>
 </table>
 <p>12959 rows × 3 columns</p>
-</div>
+
 
 
 ### Walk Forward
@@ -2191,7 +2191,6 @@ print('strategy return mean :', statistics.mean(strategy_returns))
     hold return mean : 1.2828625333049686
     strategy return mean : -1.4043760225000046
 
-
 ### Plots
 
 #### Plot stats of particular result
@@ -2211,10 +2210,15 @@ def plot_stats(data_full, stats):
 plot_stats(data, stats[0])
 ```
 
-<div class="bk-root" id="2fefdc88-c6dc-4f43-96a5-e3736f18002b" data-root-id="8381"></div
-#### Plot full equity curve of all validation tests
 
-검증셋으로 투자한 결과를 보여주는 그림
+
+<div class="bk-root" id="2fefdc88-c6dc-4f43-96a5-e3736f18002b" data-root-id="8381"></div>
+
+
+
+
+
+#### Plot full equity curve of all validation tests
 
 
 ```python
@@ -2252,10 +2256,8 @@ def plot_full_equity_curve(
 plot_full_equity_curve(data, stats, warmup_bars, lookback_bars)
 ```
 
-
-![png](/images/2023-10-14-lecture_of_backtesting-py/output_46_0.png)
-
- 
+검증세트로 투자한 것을 연결해서 표현한 그림    
+![output_46_0](/images/2023-10-14-lecture_of_backtesting-py/output_46_0.png)
 
 
                                Equity  DrawdownPct DrawdownDuration
@@ -2273,9 +2275,8 @@ plot_full_equity_curve(data, stats, warmup_bars, lookback_bars)
     
     [11520 rows x 3 columns]
 
-#### Plot Flow graph of training vs test data
 
-학습/검증 세트를 보여주는 그림
+#### Plot Flow graph of training vs test data
 
 
 ```python
@@ -2310,9 +2311,8 @@ def plot_flow_graph(
 plot_flow_graph(data, lookback_bars, validation_bars)
 ```
 
-
-![png](/images/2023-10-14-lecture_of_backtesting-py/output_49_0.png)
-    
+​    학습/검증 세트의 구성을 보여주는 그림
+​    ![output_49_0](/images/2023-10-14-lecture_of_backtesting-py/output_49_0.png)
 
 
 ## 8. Fractional Shares in Backtesting.py
@@ -2425,6 +2425,35 @@ bt.plot()
 
 
 
+<div class="bk-root" id="a5d05fb1-3b87-4d8e-93e4-abae8f42909a" data-root-id="9203"></div>
+
+
+
+
+
+
+
+
+<div style="display: table;"><div style="display: table-row;"><div style="display: table-cell;"><b title="bokeh.models.layouts.Row">Row</b>(</div><div style="display: table-cell;">id&nbsp;=&nbsp;'9203', <span id="9541" style="cursor: pointer;">&hellip;)</span></div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">align&nbsp;=&nbsp;'start',</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">aspect_ratio&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">background&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">children&nbsp;=&nbsp;[GridBox(id='9200', ...), ToolbarBox(id='9202', ...)],</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">cols&nbsp;=&nbsp;'auto',</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">css_classes&nbsp;=&nbsp;[],</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">disabled&nbsp;=&nbsp;False,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">height&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">height_policy&nbsp;=&nbsp;'auto',</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">js_event_callbacks&nbsp;=&nbsp;{},</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">js_property_callbacks&nbsp;=&nbsp;{},</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">margin&nbsp;=&nbsp;(0, 0, 0, 0),</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">max_height&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">max_width&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_height&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">min_width&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">name&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">sizing_mode&nbsp;=&nbsp;'stretch_width',</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">spacing&nbsp;=&nbsp;0,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">subscribed_events&nbsp;=&nbsp;[],</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">syncable&nbsp;=&nbsp;True,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">tags&nbsp;=&nbsp;[],</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">visible&nbsp;=&nbsp;True,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">width&nbsp;=&nbsp;None,</div></div><div class="9540" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">width_policy&nbsp;=&nbsp;'auto')</div></div></div>
+<script>
+(function() {
+  let expanded = false;
+  const ellipsis = document.getElementById("9541");
+  ellipsis.addEventListener("click", function() {
+    const rows = document.getElementsByClassName("9540");
+    for (let i = 0; i < rows.length; i++) {
+      const el = rows[i];
+      el.style.display = expanded ? "none" : "table-row";
+    }
+    ellipsis.innerHTML = expanded ? "&hellip;)" : "&lsaquo;&lsaquo;&lsaquo;";
+    expanded = !expanded;
+  });
+})();
+</script>
+
+
+
+
 
 
 ```python
@@ -2432,6 +2461,24 @@ stats._trades
 ```
 
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+    
+    .dataframe thead th {
+        text-align: right;
+    }
+
+</style>
 
 <table border="1" class="dataframe">
   <thead>
@@ -2570,12 +2617,13 @@ stats._trades
   </tbody>
 </table>
 
+</div>
+
+
 
 ## 9. Multi-threaded Backtesting in python
 
-멀티스레드는 .py 파일로 실행해야함 
-
-60개의 데이터를 처리하는데, 약 3배의 시간이 차이남을 확인.
+멀티스레드를 사용하는 경우 이 예에서는 3배의 속도 차이 발생
 
 
 ```python
@@ -2640,7 +2688,6 @@ stats._trades
 
 
 ```python
-
 from datetime import datetime
 import pandas_ta as ta
 import pandas as pd
@@ -2705,6 +2752,87 @@ time_taken = time.time() - start_time
 print(f"Took {time_taken} seconds")
 ```
 
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
+    ('KODEX 200선물인버스2X', -58.9937544)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('KODEX 코스피', -26.63166719999997)
+    ('TIGER 2차전지테마', 126.3208749)
+    ('KODEX 미국반도체MV', 18.611619400000013)
+    ('TIGER 200 IT', 13.659680999999976)
+    ('TIGER Fn신재생에너지', 9.86832450000001)
+    ('TIGER 코스닥150선물인버스', 34.32884810000002)
+    ('KBSTAR 미국S&P원유생산기업(합성 H)', -20.03688280000001)
     ('KODEX 200선물인버스2X', -58.9937544)
     ('KODEX 미국반도체MV', 18.611619400000013)
     ('KODEX 코스피', -26.63166719999997)
