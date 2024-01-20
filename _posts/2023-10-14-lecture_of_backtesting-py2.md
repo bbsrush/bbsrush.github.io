@@ -2150,8 +2150,6 @@ stats = walk_forward(MomentumStrategy,
     [2400 rows x 4 columns]
 
 
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/_stats.py:122: RuntimeWarning: divide by zero encountered in double_scalars
-      s.loc['Sortino Ratio'] = np.clip((annualized_return - risk_free_rate) / (np.sqrt(np.mean(day_returns.clip(-np.inf, 0)**2)) * np.sqrt(annual_trading_days)), 0, np.inf)  # noqa: E501
 
 
 

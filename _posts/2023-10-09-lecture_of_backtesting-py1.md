@@ -919,9 +919,6 @@ bt.plot()
 display(stats['_trades'])
 ```
 
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/backtesting.py:1375: UserWarning: For multiprocessing support in `Backtest.optimize()` set multiprocessing start method to 'fork'.
-      warnings.warn("For multiprocessing support in `Backtest.optimize()` "
-
 
 
       0%|          | 0/9 [00:00<?, ?it/s]
@@ -1108,8 +1105,7 @@ bt.plot()
 display(stats['_trades'])
 ```
 
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/backtesting.py:1375: UserWarning: For multiprocessing support in `Backtest.optimize()` set multiprocessing start method to 'fork'.
-      warnings.warn("For multiprocessing support in `Backtest.optimize()` "
+
 
 
 
@@ -2532,25 +2528,6 @@ display(stats['_trades'])
 
 
 
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
 ## strategies
 
 ### strategy : SAR, MACD
@@ -2945,15 +2922,6 @@ bt.plot()
 display(stats['_trades'])
 ```
 
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/backtesting.py:1488: UserWarning: Searching for best of 342 configurations.
-      output = _optimize_grid()
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/backtesting.py:1375: UserWarning: For multiprocessing support in `Backtest.optimize()` set multiprocessing start method to 'fork'.
-      warnings.warn("For multiprocessing support in `Backtest.optimize()` "
-
-
-
-      0%|          | 0/9 [00:00<?, ?it/s]
-
 
 
 
@@ -3242,9 +3210,6 @@ print(stats)
 bt.plot()
 display(stats['_trades'])
 ```
-
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/backtesting.py:1375: UserWarning: For multiprocessing support in `Backtest.optimize()` set multiprocessing start method to 'fork'.
-      warnings.warn("For multiprocessing support in `Backtest.optimize()` "
 
 
 
@@ -3832,9 +3797,6 @@ print(stats)
 bt.plot()
 display(stats['_trades'])
 ```
-
-    /Users/byeongsikbu/opt/anaconda3/envs/dct/lib/python3.10/site-packages/backtesting/backtesting.py:1375: UserWarning: For multiprocessing support in `Backtest.optimize()` set multiprocessing start method to 'fork'.
-      warnings.warn("For multiprocessing support in `Backtest.optimize()` "
 
 
 
